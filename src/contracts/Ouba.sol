@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
-contract DummyOubaToken {
+contract Ouba {
 
 
   string public name ="rewards Ouba Token";
-  string public symbol ="Douba";
+  string public symbol ="Ouba";
   uint public totalsupply = 1000000000000000000000000;
   uint public decimal = 18;
 
@@ -24,9 +24,8 @@ contract DummyOubaToken {
     mapping (address => uint256) public balance ;
     mapping (address => mapping (address => uint256)) public allowance ;
 
-    constructor() public {
+    constructor() {
         balance[msg.sender] = totalsupply;
-
     }
 
     function transfer(address _to, uint256 _value) public returns(bool success) {
