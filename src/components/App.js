@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Web3 from "web3";
-import Ouba from "./build/Ouba.json";
-import Rewards from "./build/Rewards.json";
-import Staking from "./build/Staking.json";
+import Ouba from "../build/Ouba.json";
+import Rewards from "../build/Rewards.json";
+import Staking from "../build/Staking.json";
 import "./App.css";
 import { ethers } from "ethers";
 
