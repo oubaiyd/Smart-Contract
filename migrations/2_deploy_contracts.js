@@ -1,6 +1,6 @@
 const Rewards_Token = artifacts.require("RewardsToken");
 const Ouba_Token = artifacts.require("Ouba");
-const Staking_Dapp = artifacts.require("StakingDapp");
+const Staking_Dapp = artifacts.require("Staking");
 
 module.exports = async function (deployer, network, accounts) {
   // deploy Ouba_Token

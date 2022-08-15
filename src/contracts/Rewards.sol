@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
-contract RewardsToken {
+contract Rewards {
 
-  string public name ="rewards Ouba Token";
+  string public name ="Rewards Token";
   string public symbol ="RT";
   uint public totalsupply = 1000000000000000000000000;
   uint public decimal = 18;
@@ -36,7 +36,7 @@ contract RewardsToken {
         return true;
     }
 
-    function approuve(address _spender, uint256 _value) public returns(bool success) {
+    function approve(address _spender, uint256 _value) public returns(bool success) {
         allowance[msg.sender][_spender] = _value;
         emit Approve(msg.sender, _spender, _value);
         return true;

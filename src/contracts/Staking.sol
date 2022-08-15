@@ -2,12 +2,12 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 import "./Ouba.sol";
-import "./RewardsToken.sol";
+import "./Rewards.sol";
 
-contract StakingDapp {
+contract Staking {
     string public name ="Staking Dapp";
     address public owner;
-    RewardsToken public dummy;
+    Rewards public dummy;
     Ouba public ouba;
 
     address[] public stakers;
@@ -15,7 +15,7 @@ contract StakingDapp {
     mapping(address => bool) public hasstaked;
     mapping(address => bool) public isstaked;
 
-    constructor (RewardsToken _dummy,Ouba _ouba) {
+    constructor (Rewards _dummy,Ouba _ouba) {
         dummy = _dummy;
         ouba = _ouba;
         owner = msg.sender;
@@ -36,7 +36,7 @@ contract StakingDapp {
     }
 
     // unstake Token
-    function unstaketoken() public {
+    function unstakeToken() public {
         uint balance = stakingBalance[msg.sender];
         require(balance > 0 , "Staking balance is zero");
         ouba.transfer(msg.sender, balance);
