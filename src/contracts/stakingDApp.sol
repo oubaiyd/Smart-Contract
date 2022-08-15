@@ -1,27 +1,27 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
-import "./Oubatoken.sol";
-import "./Dummy_Oubatoken.sol";
+import "./Ouba.sol";
+import "./RewardsToken.sol";
 
 contract StakingDapp {
     string public name ="Staking Dapp";
     address public owner;
-    DummyOubaToken public dummy;
-    OubaToken public ouba;
-
+    RewardsToken public dummy;
+    Ouba public ouba;
 
     address[] public stakers;
     mapping(address => uint) public stakingBalance;
     mapping(address => bool) public hasstaked;
     mapping(address => bool) public isstaked;
 
-    constructor(DummyOubaToken _dummy,OubaToken _ouba) public {
+    constructor (RewardsToken _dummy,Ouba _ouba) {
         dummy = _dummy;
         ouba = _ouba;
         owner = msg.sender;
     }
-
+    
+    // stake Token
     function stakeToken(uint _amount) public {
         require(_amount>0, "Amount can't be zero");
         ouba.transferfrom(msg.sender, address(this), _amount);
@@ -35,6 +35,7 @@ contract StakingDapp {
         hasstaked[msg.sender] = true;
     }
 
+    // unstake Token
     function unstaketoken() public {
         uint balance = stakingBalance[msg.sender];
         require(balance > 0 , "Staking balance is zero");
@@ -43,6 +44,7 @@ contract StakingDapp {
         isstaked[msg.sender] = false;
     }
 
+    // check if eligible to rewards
     function isEligibleToRewards() public {
         require(msg.sender == owner ,"you must be the owner");
         for (uint i = 0; i < stakers.length; i++) {
