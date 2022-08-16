@@ -1,4 +1,4 @@
-const Rewards_Token = artifacts.require("RewardsToken");
+const Rewards_Token = artifacts.require("Rewards");
 const Ouba_Token = artifacts.require("Ouba");
 const Staking_Dapp = artifacts.require("Staking");
 
